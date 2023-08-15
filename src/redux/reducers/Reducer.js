@@ -1,8 +1,8 @@
 const initialState = {
-    movies: [],
+    movies: {},
   };
   
-  
+
   const reducer = (state = initialState, action) => {
     switch (action.type) {
       case 'SET_MOVIES':

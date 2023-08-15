@@ -16,15 +16,25 @@ export default function MovieList() {
     
     const gotoMovieDetails=(movie)=>{
         console.log("clicked")
-        navigate('/movie',movie);
+        navigate(`/movie/${movie}`);
     }
     return (
         <div>
             {
-              movies.results.length > 0  && movies.results.map((movie)=>(
-                   <MovieCard key={movie.id} moviedata={movie} onclick={()=>gotoMovieDetails(movie)}></MovieCard>
-                ))
+                 movies === undefined?
+                (
+                    <div>loading Movies</div>
+                    
+                ):(
+                    movies.results.map((movie)=>(
+                        <div onClick={()=>gotoMovieDetails(movie.id)}>
+                            <MovieCard key={movie.id} moviedata={movie} ></MovieCard>
+                         </div>
+                      ))
+                   
+                  )
             }
+            
             
         </div>
     )
